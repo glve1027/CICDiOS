@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+import AppCenter
+import AppCenterCrashes
+import AppCenterAnalytics
 
 struct ContentView: View {
     var body: some View {
@@ -14,6 +17,11 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
             Text("Hello, world!")
+        }.onAppear {
+          AppCenter.start(withAppSecret: "e469339f-8655-4036-9422-d9599794e365", services:[
+            Analytics.self,
+            Crashes.self
+          ])
         }
         .padding()
     }
